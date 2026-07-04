@@ -8,6 +8,8 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
     vite: {
+        // Base path for GitHub Pages (project site) so assets resolve correctly.
+        base: "/Portfolio-website/",
         server: {
             proxy: {
                 "/api": {
