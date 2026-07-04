@@ -28,8 +28,8 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="section-anchor section-glow-left py-20">
-      {/* Header row: title left, connect image right (increased size to 400px) */}
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_400px] mb-10">
+      {/* Header row: title left, connect image right */}
+      <div className="grid grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-[1fr_400px] mb-10">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -60,8 +60,14 @@ export function ContactSection() {
           </motion.p>
         </div>
 
-        {/* Static Connect Image - No box, No motion, increased size */}
-        <div className="hidden lg:block">
+        {/* Section image — visible on all screen sizes */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none"
+        >
           <img
             src={`${import.meta.env.BASE_URL}certificates/connect.png`}
             alt="Let's connect"
@@ -71,7 +77,7 @@ export function ContactSection() {
               filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))"
             }}
           />
-        </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">

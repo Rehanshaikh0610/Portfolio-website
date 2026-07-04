@@ -32,7 +32,7 @@ export function CertificationsSection() {
   return (
     <section id="certifications" className="section-anchor section-glow-right py-20">
       {/* Header row: Title area left, Certificate image right */}
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_400px] mb-10">
+      <div className="grid grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-[1fr_400px] mb-10">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -63,8 +63,14 @@ export function CertificationsSection() {
           </motion.p>
         </div>
 
-        {/* Large Static Image (No Box Frame) */}
-        <div className="hidden lg:block">
+        {/* Section image — visible on all screen sizes */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none"
+        >
           <img
             src={`${import.meta.env.BASE_URL}certificates/certificate.png`}
             alt="Main Certification"
@@ -75,7 +81,7 @@ export function CertificationsSection() {
               objectFit: "contain"
             }}
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Filter Buttons */}
@@ -122,7 +128,7 @@ export function CertificationsSection() {
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(null)} className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-4 backdrop-blur-md">
-            <motion.div initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass-strong relative w-full max-w-2xl rounded-3xl p-6 shadow-[var(--shadow-card)]">
+            <motion.div initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass-strong relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-4 sm:p-6 shadow-[var(--shadow-card)]">
               <button onClick={() => setOpen(null)} className="absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground hover:bg-white/10 hover:text-foreground">
                 <X className="h-4 w-4" />
               </button>

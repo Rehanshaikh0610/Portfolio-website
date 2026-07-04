@@ -14,8 +14,7 @@ const Github = (props: React.SVGProps<SVGSVGElement>) => (
 export function ProjectsSection() {
   return (
     <section id="projects" className="section-anchor section-glow-left py-20">
-      {/* Increased the right column width from 260px to 400px for a larger image */}
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_400px] mb-10">
+      <div className="grid grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-[1fr_400px] mb-10">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -46,18 +45,24 @@ export function ProjectsSection() {
           </motion.p>
         </div>
 
-        {/* Image without the frame/box styling */}
-        <div className="hidden lg:block">
+        {/* Section image — visible on all screen sizes */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none"
+        >
           <img
-            className="w-full h-auto rounded-xl" // Uses auto height to prevent squishing
+            className="w-full h-auto rounded-xl"
             src={`${import.meta.env.BASE_URL}certificates/project.png`}
             alt="Project Overview"
             style={{
               display: "block",
-              filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))" // Adds depth without a box frame
+              filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))"
             }}
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Project cards */}

@@ -72,7 +72,7 @@ export function ExperienceSection() {
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(null)} className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-4 backdrop-blur-md">
-            <motion.div initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass-strong relative w-full max-w-md rounded-3xl p-6 shadow-[var(--shadow-card)]">
+            <motion.div initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} onClick={(e) => e.stopPropagation()} className="glass-strong relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl p-4 sm:p-6 shadow-[var(--shadow-card)]">
               <button onClick={() => setOpen(null)} className="absolute right-4 top-4 rounded-full p-1.5 text-muted-foreground hover:bg-white/10 hover:text-foreground"><X className="h-4 w-4" /></button>
               <h3 className="mt-1 text-2xl font-bold">{open.title}</h3>
               <p className="text-sm text-muted-foreground">{open.org}</p>

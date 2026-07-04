@@ -79,9 +79,8 @@ export function HeroVideo() {
             >
                 {/* Main video frame — constrained height, person centered */}
                 <div
-                    className="hero-video-stage relative overflow-hidden rounded-2xl"
+                    className="hero-video-stage relative overflow-hidden rounded-2xl max-h-[280px] sm:max-h-[360px] lg:max-h-[420px]"
                     style={{
-                        maxHeight: "420px",
                         boxShadow: `
                             0 25px 60px -15px oklch(0 0 0 / 0.6),
                             0 10px 30px -10px oklch(0.72 0.19 45 / 0.20),
@@ -102,11 +101,10 @@ export function HeroVideo() {
                     {/* Video element — height-constrained, person centered, bottom trimmed */}
                     <video
                         ref={videoRef}
-                        className="relative z-10 block w-full h-full"
+                        className="relative z-10 block w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[420px]"
                         style={{
                             objectFit: "cover",
                             objectPosition: "center 42%",
-                            minHeight: "420px",
                         }}
                         playsInline
                         muted
