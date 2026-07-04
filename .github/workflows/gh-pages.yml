@@ -34,8 +34,8 @@ jobs:
         run: |
           cd dist/client
           # pick the built index JS and styles files (first match)
-          INDEX_JS=$(ls assets/index-*.js | head -n1)
-          STYLES_CSS=$(ls assets/styles-*.css | head -n1 || true)
+          INDEX_JS=$(basename "$(ls assets/index-*.js | head -n1)")
+          STYLES_CSS=$(basename "$(ls assets/styles-*.css | head -n1 || true)")
           echo "Generating index.html using $INDEX_JS and $STYLES_CSS"
           cat > index.html <<HTML
           <!doctype html>

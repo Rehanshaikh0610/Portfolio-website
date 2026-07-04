@@ -28,7 +28,7 @@ export function HeroVideo() {
         const handleEnded = () => {
             if (!hasPlayedVid1) {
                 setHasPlayedVid1(true);
-                video.src = "/certificates/vid2.mp4";
+                video.src = `${import.meta.env.BASE_URL}certificates/vid2.mp4`;
                 video.loop = true;
                 video.play();
             }
@@ -37,7 +37,7 @@ export function HeroVideo() {
         video.addEventListener("ended", handleEnded);
 
         if (!hasPlayedVid1) {
-            video.src = "/certificates/vid1.mp4";
+            video.src = `${import.meta.env.BASE_URL}certificates/vid1.mp4`;
             video.loop = false;
             video.play();
         }

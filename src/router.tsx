@@ -58,7 +58,7 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: {},
-    history: createHashHistory(),
+    history: typeof window !== "undefined" ? createHashHistory() : undefined,
     basepath: import.meta.env.BASE_URL,
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
