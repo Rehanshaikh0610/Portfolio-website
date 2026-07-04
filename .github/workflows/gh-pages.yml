@@ -30,6 +30,29 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Generate index.html for GitHub Pages
+        run: |
+          cd dist/client
+          # pick the built index JS and styles files (first match)
+          INDEX_JS=$(ls assets/index-*.js | head -n1)
+          STYLES_CSS=$(ls assets/styles-*.css | head -n1 || true)
+          echo "Generating index.html using $INDEX_JS and $STYLES_CSS"
+          cat > index.html <<HTML
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width,initial-scale=1" />
+              <title>Portfolio</title>
+              $( [ -n "$STYLES_CSS" ] && echo "<link rel=\"stylesheet\" href=\"./assets/$STYLES_CSS\">" || echo "" )
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" src="./assets/$INDEX_JS"></script>
+            </body>
+          </html>
+          HTML
+
       - name: Configure git for deploy
         run: |
           git config --global user.name "github-actions[bot]"
