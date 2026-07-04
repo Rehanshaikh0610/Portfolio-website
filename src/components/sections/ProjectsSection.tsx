@@ -50,9 +50,9 @@ export function ProjectsSection() {
         <div className="hidden lg:block">
           <img
             className="w-full h-auto rounded-xl" // Uses auto height to prevent squishing
-            src="/certificates/project.png"
+            src={`${import.meta.env.BASE_URL}certificates/project.png`}
             alt="Project Overview"
-            style={{ 
+            style={{
               display: "block",
               filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))" // Adds depth without a box frame
             }}

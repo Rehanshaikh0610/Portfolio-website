@@ -63,12 +63,12 @@ export function ContactSection() {
         {/* Static Connect Image - No box, No motion, increased size */}
         <div className="hidden lg:block">
           <img
-            src="/certificates/connect.png"
+            src={`${import.meta.env.BASE_URL}certificates/connect.png`}
             alt="Let's connect"
             className="w-full h-auto rounded-xl"
-            style={{ 
+            style={{
               display: "block",
-              filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))" 
+              filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.3))"
             }}
           />
         </div>
@@ -77,15 +77,15 @@ export function ContactSection() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
         <div className="lg:col-span-2 space-y-3">
           {items.map((it, i) => (
-            <motion.a 
-              key={it.label} 
-              href={it.href ?? "#"} 
-              target={it.href?.startsWith('http') ? "_blank" : undefined} 
-              rel={it.href?.startsWith('http') ? "noreferrer" : undefined} 
-              initial={{ opacity: 0, x: -12 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.4, delay: i * 0.05 }} 
+            <motion.a
+              key={it.label}
+              href={it.href ?? "#"}
+              target={it.href?.startsWith('http') ? "_blank" : undefined}
+              rel={it.href?.startsWith('http') ? "noreferrer" : undefined}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
               className="glass-strong group flex items-center gap-4 rounded-2xl p-4 transition-all hover:border-brand/40 hover:shadow-[var(--shadow-brand)]"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand/30 to-brand-2/30 ring-1 ring-brand/40"><it.icon className="h-5 w-5" /></div>
@@ -97,41 +97,41 @@ export function ContactSection() {
           ))}
         </div>
 
-        <motion.form 
-          initial={{ opacity: 0, y: 18 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
-          transition={{ duration: 0.5 }} 
+        <motion.form
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           onSubmit={async (e) => {
             e.preventDefault();
             setIsSubmitting(true);
             setSubmitStatus('idle');
             const formData = new FormData(e.currentTarget);
             try {
-              const response = await fetch("/api/send-email", { 
-                method: "POST", 
-                headers: { "Content-Type": "application/json" }, 
-                body: JSON.stringify({ 
-                  name: formData.get("name"), 
-                  email: formData.get("email"), 
-                  message: formData.get("message") 
-                }) 
+              const response = await fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name: formData.get("name"),
+                  email: formData.get("email"),
+                  message: formData.get("message")
+                })
               });
-              if (response.ok) { 
-                setSubmitStatus('success'); 
-                (e.target as HTMLFormElement).reset(); 
-                setTimeout(() => setSubmitStatus('idle'), 3000); 
-              } else { 
-                setSubmitStatus('error'); 
-                setTimeout(() => setSubmitStatus('idle'), 3000); 
+              if (response.ok) {
+                setSubmitStatus('success');
+                (e.target as HTMLFormElement).reset();
+                setTimeout(() => setSubmitStatus('idle'), 3000);
+              } else {
+                setSubmitStatus('error');
+                setTimeout(() => setSubmitStatus('idle'), 3000);
               }
-            } catch { 
-              setSubmitStatus('error'); 
-              setTimeout(() => setSubmitStatus('idle'), 3000); 
-            } finally { 
-              setIsSubmitting(false); 
+            } catch {
+              setSubmitStatus('error');
+              setTimeout(() => setSubmitStatus('idle'), 3000);
+            } finally {
+              setIsSubmitting(false);
             }
-          }} 
+          }}
           className="glass-strong space-y-4 rounded-3xl p-6 lg:col-span-3"
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

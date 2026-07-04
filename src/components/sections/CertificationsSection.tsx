@@ -66,7 +66,7 @@ export function CertificationsSection() {
         {/* Large Static Image (No Box Frame) */}
         <div className="hidden lg:block">
           <img
-            src="/certificates/certificate.png"
+            src={`${import.meta.env.BASE_URL}certificates/certificate.png`}
             alt="Main Certification"
             className="w-full h-auto rounded-xl"
             style={{
