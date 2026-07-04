@@ -36,7 +36,7 @@ export function FloatingNav() {
       const el = document.getElementById(anchor);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      window.location.href = "/#" + anchor;
+      window.location.href = `${import.meta.env.BASE_URL}#${anchor}`;
     }
   };
 
@@ -87,7 +87,7 @@ export function FloatingNav() {
 
         {/* CTA */}
         <a
-          href="/certificates/Resume.pdf"
+          href={`${import.meta.env.BASE_URL}certificates/Resume.pdf`}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-full border border-border bg-white/5 px-3.5 py-1.5 text-[13px] font-medium text-foreground transition-colors hover:bg-white/10"
@@ -109,7 +109,7 @@ export function FloatingNav() {
               className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${active
                 ? "bg-gradient-to-b from-[color:var(--brand)] to-[color:var(--brand-2)] text-primary-foreground"
                 : "text-muted-foreground hover:text-foreground"
-              }`}
+                }`}
             >
               {s.label}
             </a>
