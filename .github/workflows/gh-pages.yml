@@ -26,5 +26,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          # The Vite build outputs the client static site to dist/client
+          publish_dir: ./dist/client
           publish_branch: gh-pages
